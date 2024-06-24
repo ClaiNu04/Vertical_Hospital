@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <template id="report_patient">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Patient Card </h2>
+                        <p><strong>Patient RNC: </strong><t t-esc="doc.rnc"/></p>
+                        <p><strong>Reference: </strong> <t t-esc="doc.ref"/></p>
+                        <p><strong>Patient name: </strong> <t t-esc="doc.name"/></p>
+                        <p><strong>Patient last name: </strong> <t t-esc="doc.last_name"/></p>
+                        <p><strong>Patient State: </strong> <t t-esc="doc.state"/></p>
+                    </div>
+                </t>
+            </t>
+        </t>        
+    </template>
+
+
+</odoo>

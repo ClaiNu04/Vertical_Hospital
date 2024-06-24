@@ -1,0 +1,115 @@
+<odoo>
+  <data>
+    
+    <!-- definicion del formulario de los pacientes -->
+
+      <record id="hospital_patient_form" model="ir.ui.view">
+        <field name="name">hospital.patient.form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+          <form>
+            <header>
+              <field name="state" widget="statusbar" options= "{'clickable':'1'}"/>
+            </header>
+            <sheet>
+              <div class="oe_title">
+                  <h1>
+                    <field name="ref" readonly="1"/>
+                  </h1>
+              </div>  
+              <group>
+                <field name="name"/>
+                <field name="last_name"/>
+                <field name="rnc"/>
+                <field name="date_alta"/>               
+              </group>
+                <field name="treatment_lines_ids" res_model='hospital.treatment' readonly="1">
+                    <tree>
+                        <field name="code"/>
+                        <field name="name"/>
+                        <field name="doctor"/>
+                        <field name="qty"/>
+                    </tree>             
+                </field>
+            </sheet>
+              <!-- Chatter -->
+            <div class="oe_chatter">
+              <field name="message_follower_ids" groups="base.group_user"/>
+              <field name="activity_ids"/>
+              <field name="message_ids"/>
+            </div>
+          </form>
+        </field>
+      </record>
+
+    <!-- definicion de la lista de los pacientes -->
+
+    <record model="ir.ui.view" id="hospital_patient_list">
+      <field name="name">hospital.patient.list</field>
+      <field name="model">hospital.patient</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="ref"/>
+          <field name="name"/>
+          <field name="last_name"/>
+          <field name="rnc"/>
+          <field name="state"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- definicion de la accion del menu paciente -->
+
+    <record id="hospital_patient_action" model="ir.actions.act_window">
+      <field name="name">Patients</field>
+      <field name="res_model">hospital.patient</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="vertical_hospital.action_window">
+      <field name="name">vertical_hospital window</field>
+      <field name="res_model">vertical_hospital.vertical_hospital</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="vertical_hospital.action_server">
+      <field name="name">vertical_hospital server</field>
+      <field name="model_id" ref="model_vertical_hospital_vertical_hospital"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="vertical_hospital" id="vertical_hospital.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="vertical_hospital.menu_1" parent="vertical_hospital.menu_root"/>
+    <menuitem name="Menu 2" id="vertical_hospital.menu_2" parent="vertical_hospital.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="vertical_hospital.menu_1_list" parent="vertical_hospital.menu_1"
+              action="vertical_hospital.action_window"/>
+    <menuitem name="Server to list" id="vertical_hospital" parent="vertical_hospital.menu_2"
+              action="vertical_hospital.action_server"/>
+-->
+  </data>
+</odoo>

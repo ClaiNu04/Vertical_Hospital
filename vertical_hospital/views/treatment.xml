@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- formulario de los tratamientos -->
+
+    <record id="hospital_treatment_view_form" model="ir.ui.view">
+        <field name="name">treatment.view.form</field>
+        <field name="model">hospital.treatment</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                        <field name="doctor"/>
+                        <field name="treatment_id"/>
+                        <field name="qty"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- lista de los tratamientos -->
+
+    <record id="hospital_treatment_view_tree" model="ir.ui.view">
+        <field name="name">treatment.view.tree</field>
+        <field name="model">hospital.treatment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="doctor"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- accion de los tratamientos -->
+
+    <record id="hospital_treatment_action" model="ir.actions.act_window">
+        <field name="name">Treatments</field>
+        <field name="res_model">hospital.treatment</field>
+        <field name="view_mode">tree,form</field>        
+    </record>
+
+    <!-- definicion de los menu -->
+
+    <menuitem
+        id="hospital_admin_menu"
+        name="Admin menu"
+        parent="vertical_hospital_menu"
+        sequence="10"/>
+    
+    <menuitem
+        id="treatment_menu"
+        name="Tratamientos"
+        parent="hospital_admin_menu"
+        action="hospital_treatment_action"
+        sequence="10"/>
+
+</odoo>

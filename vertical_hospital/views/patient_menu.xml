@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="vertical_hospital_menu"
+        name="Vertical_Hospital"
+        sequence="10"
+        web_icon="vertical_hospital,static/description/icon.png"/>
+
+    <menuitem
+        id="menu_configuration"
+        name="Configuracion"
+        parent="vertical_hospital_menu"
+        sequence="10"/>
+    
+    <menuitem
+        id="operation_menu"
+        name="Operacion"
+        parent="vertical_hospital_menu"
+        sequence="10"/>
+
+    <menuitem
+        id="hospital_patient_menu"
+        name="Paciente"
+        parent="operation_menu"
+        action="hospital_patient_action"
+        sequence="10"/>
+
+</odoo>
